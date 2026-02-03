@@ -29,6 +29,8 @@ const Login = ({ setToken })=> {
 
   } catch (err) {
     console.log("LOGIN ERROR:", err);
+    const errorMessage = err.response?.data?.error || err.response?.data?.message || err.message || 'Login failed'
+    setError(typeof errorMessage === 'string' ? errorMessage : JSON.stringify(errorMessage))
   }
 };
 
